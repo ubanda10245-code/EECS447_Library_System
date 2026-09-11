@@ -4,7 +4,7 @@
 
 **Instructor:** Professor Hossein Saiedian
 
-**Team Name:** [Your Team Name]
+**Team Name:** DataBASED
 
 ## Table of Contents
 * [1. Vision Statement](#-1.-Project-Overview)
