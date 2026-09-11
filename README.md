@@ -19,12 +19,12 @@
 ## 2. Team Organization
 * **Team Administrator:** 
 
-| Team Member       | Contact Info         | Role(s)  | Availability                                             | Computing platform experience| Programming language knowledge  |
-| ----------------- | -------------------- | -------- | -------------------------------------------------------- | ---------------------------- | ------------------------------  |
-| Connor Eaton      | Email:               | Developer|                                                          |                              |                                 |
-| Kegan Firey       | Email:               | Developer|                                                          |                              |                                 |
-| Lydia Peng        | Email:               | Developer|                                                          |                              |                                 |
-| Joseph Ubanda-Ruiz| Email: jubanda@ku.edu| Developer| MWF 1pm-2pm, 3pm-4pm<br>T 12:15pm-4:00pm<br>R 12:15pm-2pm| Windows 11 and macOS         | Python, HTML, JavaScript, C, C++|
+|Team Member       |Contact Info             |Role(s)  |Availability                                             |Computing platform experience|Programming language knowledge        |
+|------------------|-------------------------|---------|---------------------------------------------------------|-----------------------------|--------------------------------------|
+|Connor Eaton      |Email:                   |Developer|                                                         |                             |                                      |
+|Kegan Firey       |Email:                   |Developer|                                                         |                             |                                      |
+|Lydia Peng        |Email: lydia64peng@ku.edu|Developer|MWF 9am-1pm, 3pm-5pm<br>R 4pm-5pm                        |Windows, macOS               |Python, C#, C++, HTML, JavaScript, SQL|
+|Joseph Ubanda-Ruiz|Email: jubanda@ku.edu    |Developer|MWF 1pm-2pm, 3pm-4pm<br>T 12:15pm-4:00pm<br>R 12:15pm-2pm|Windows 11 and macOS         |Python, HTML, JavaScript, C, C++       |
 
 ## 3. Project Status
 - [x] Part 1: Vision Statement and Project Plan
