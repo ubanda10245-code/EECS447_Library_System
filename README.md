@@ -33,7 +33,7 @@ The project will follow the process and contain all artifacts/designs of the dat
 - [x] Part 1: Vision Statement and Project Plan
 - [x] Part 2: Domain Modeling and Requirements Engineering
 - [x] Part 3: Conceptual Design (ER Diagram)
-- [ ] Part 4: Logical Design
+- [x] Part 4: Logical Design
 - [ ] Part 5: Physical Design and Data Population
 - [ ] Part 6: Project Demonstration
 
