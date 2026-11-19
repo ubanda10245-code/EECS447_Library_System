@@ -1,11 +1,13 @@
--- Use mysql -u root 
--- mysql>   source library_schema.sql;
+-- mysql -u root 
+-- mysql> source library_schema.sql;
 
+-- OR
 
--- --------------------------------------
+-- mysql -u root < library_schema.sql
+
+-- ----------------------------------
 CREATE DATABASE IF NOT EXISTS library_db;
 USE library_db;
-
 
 -- DROP TABLES (for re-running the database creation)
 DROP TABLE IF EXISTS RESERVATION;
@@ -16,7 +18,6 @@ DROP TABLE IF EXISTS MAGAZINE;
 DROP TABLE IF EXISTS DIGITAL_MEDIA;
 DROP TABLE IF EXISTS BOOK;
 DROP TABLE IF EXISTS ITEM;
- 
 
 -- ITEM (superclass)
 CREATE TABLE ITEM (
@@ -31,7 +32,6 @@ CREATE TABLE ITEM (
     CONSTRAINT check_item_restricted 
         CHECK (Restricted IN ('None', 'Restricted'))
 );
-
 
 -- BOOK (subclass of ITEM)
 CREATE TABLE BOOK (
@@ -49,9 +49,8 @@ CREATE TABLE BOOK (
         ON DELETE CASCADE ON UPDATE CASCADE,
     
     UNIQUE KEY uq_book_isbn (ISBN),
-    CONSTRAINT check_book_isbn CHECK (ISBN REGEXP '^[0-9]{13}$');
+    CONSTRAINT check_book_isbn CHECK (ISBN REGEXP '^[0-9]{13}$')
 );
-
 
 -- DIGITAL_MEDIA (subclass of ITEM)
 CREATE TABLE DIGITAL_MEDIA (
@@ -66,7 +65,6 @@ CREATE TABLE DIGITAL_MEDIA (
         FOREIGN KEY (ItemID) REFERENCES ITEM (ItemID)
         ON DELETE CASCADE ON UPDATE CASCADE
 );
-
 
 -- MAGAZINE (subclass of ITEM)
 CREATE TABLE MAGAZINE (

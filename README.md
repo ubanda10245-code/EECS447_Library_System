@@ -18,6 +18,8 @@
 1. Connect to MySQL as the root user:
 
    ```bash
+   mysql -u root < library_schema.sql
+   mysql -u root < library_data.sql
    mysql -u root
    ```
 
@@ -47,9 +49,10 @@ The project will follow the process and contain all artifacts/designs of the dat
 * [x] Part 2: Domain Modeling and Requirements Engineering
 * [x] Part 3: Conceptual Design (ER Diagram)
 * [x] Part 4: Logical Design
-* [-] Part 5: Physical Design and Data Population
+* [x] Part 5: Physical Design and Data Population
 * [ ] Part 6: Project Demonstration
 
 ## 4. Repository Structure
 
 * `docs/` — design documents and deliverables (vision statement, ER diagrams, logical design)
+* `src/` - SQL files and Physical Database design
