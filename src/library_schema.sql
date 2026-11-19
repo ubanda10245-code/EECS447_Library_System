@@ -47,7 +47,9 @@ CREATE TABLE BOOK (
     CONSTRAINT fk_book_item
         FOREIGN KEY (ItemID) REFERENCES ITEM (ItemID)
         ON DELETE CASCADE ON UPDATE CASCADE,
-    UNIQUE KEY uq_book_isbn (ISBN)
+    
+    UNIQUE KEY uq_book_isbn (ISBN),
+    CONSTRAINT check_book_isbn CHECK (ISBN REGEXP '^[0-9]{13}$');
 );
 
 
@@ -71,7 +73,7 @@ CREATE TABLE MAGAZINE (
     ItemID INT NOT NULL,
     IssueNum VARCHAR(20) NOT NULL,
     PubDate DATE NOT NULL,
-    Publisher VARCHAR(20) NOT NULL,
+    Publisher VARCHAR(100) NOT NULL,
 
     PRIMARY KEY (ItemID),
     CONSTRAINT fk_magazine_item
@@ -83,12 +85,15 @@ CREATE TABLE MAGAZINE (
 CREATE TABLE MEMBERSHIP (
     MembershipType VARCHAR(10) NOT NULL,
     BorrowingLimit INT NOT NULL,
-    DailyFine DECIMAL(5,2) NOT NULL,
+    DailyFine DECIMAL(7,2) NOT NULL,
     LoanPeriod INT NOT NULL,
     ReserveLimit INT NOT NULL,
+
     PRIMARY KEY (MembershipType),
     CONSTRAINT check_membership_type
-        CHECK (MembershipType IN ('Regular', 'Student', 'Senior'))
+        CHECK (MembershipType IN ('Regular', 'Student', 'Senior')),
+    CONSTRAINT check_membership_limits
+        CHECK (BorrowingLimit > 0 AND LoanPeriod > 0 AND ReserveLimit > 0 AND DailyFine >= 0)
 );
 
 -- CLIENT
@@ -98,7 +103,7 @@ CREATE TABLE CLIENT (
     LastName VARCHAR(50) NOT NULL,
     Email VARCHAR(250),
     AccountStatus VARCHAR(20) NOT NULL DEFAULT 'Active',
-    FeesOwed DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    FeesOwed DECIMAL(7,2) NOT NULL DEFAULT 0.00,
     MembershipType VARCHAR(10) NOT NULL,
 
     PRIMARY KEY (ClientID),
@@ -119,7 +124,7 @@ CREATE TABLE LOAN (
     CheckoutDate DATE NOT NULL,
     DueDate DATE NOT NULL,
     ReturnDate DATE NULL,
-    FineAmount DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+    FineAmount DECIMAL(7,2) NOT NULL DEFAULT 0.00,
 
     PRIMARY KEY (LoanID),
     CONSTRAINT fk_loan_client
@@ -127,7 +132,10 @@ CREATE TABLE LOAN (
         ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT fk_loan_item
         FOREIGN KEY (ItemID) REFERENCES ITEM (ItemID)
-        ON DELETE RESTRICT ON UPDATE CASCADE
+        ON DELETE RESTRICT ON UPDATE CASCADE,
+    CONSTRAINT check_loan_dates
+        CHECK (DueDate >= CheckoutDate AND (ReturnDate IS NULL OR ReturnDate >= CheckoutDate)),
+    CONSTRAINT check_loan_fine CHECK (FineAmount >= 0)
 );
  
 -- RESERVATION (relational entity; CLIENT reserves ITEM)
